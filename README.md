@@ -1,34 +1,55 @@
-#Hyphotesis and questions:
-#More than 50% of the entire country's health system affiliates (both contributory and subsidised combined) are concentrated in the three largest metropolitan areas: Bogotá D.C., Medellín (Antioquia), and Cali (Valle del Cauca).
-#Question it answers: How centralized is the health system's population in the main economic hubs?
-Queries about the Adres. Colombia´s National Health System
-
+Análisis de la Centralización en el Sistema de Salud Colombiano
 1. Resumen Ejecutivo (Executive Summary)
-Este proyecto analiza la distribución geográfica de más de 46 millones de afiliados al Sistema General de Seguridad Social en Salud de Colombia. El objetivo era probar la hipótesis de que más del 50% de la población afiliada se concentra en las tres ciudades más grandes del país. 
-El análisis revela que, contrario a esta suposición, estas tres ciudades representan solo el 40.94% del total, lo que indica una descentralización mayor a la esperada y resalta la importancia de las demás regiones del país.
+Este proyecto analiza la distribución geográfica de más de 46 millones de afiliados al Sistema General de Seguridad Social en Salud (SGSSS) de Colombia. El objetivo principal era probar dos hipótesis: una sobre la alta concentración de afiliados en las tres ciudades más grandes del país (la "Regla del 50+1") y otra sobre el desequilibrio regional en la estructura de afiliación (formal vs. subsidiada).
 
-2. La Pregunta y la Hipótesis
-Pregunta de negocio: ¿Qué tan centralizada está la población del sistema de salud de Colombia en sus principales polos urbanos?
+El análisis revela que, contrario a la suposición inicial, las tres ciudades principales concentran solo el 40.94% de la población afiliada, refutando la hipótesis de centralización. Adicionalmente, se confirma un fuerte desequilibrio regional en la proporción de beneficiarios por cotizante, y se calcula una tasa de cobertura nacional neta del 87.16% sobre la población estimada.
 
-Hipótesis ("La Regla del 50+1"): Más del 50% de todos los afiliados (contributivo y subsidiado combinados) se concentran en las tres áreas metropolitanas más grandes: Bogotá D.C., Medellín y Cali.
+2. Preguntas e Hipótesis
+Pregunta 1: ¿Qué tan centralizada está la población del sistema de salud en los principales polos urbanos?
+
+Hipótesis (La Regla del 50+1): Más del 50% de todos los afiliados se concentran en Bogotá D.C., Medellín y Cali.
+
+Pregunta 2: ¿La estructura de formalidad laboral, reflejada en el sistema de salud, es uniforme en todo el país?
+
+Hipótesis (Desequilibrio Regional): La proporción de 'Beneficiarios' por cada 'Cotizante' diferirá significativamente entre los departamentos urbanos/industriales y los más rurales.
 
 3. Metodología y Herramientas
-Datos: Se utilizó un dataset ponderado y anonimizado que representa a 46,291,518 afiliados, dividido en regímenes contributivo y subsidiado.
+El análisis se realizó utilizando un flujo de trabajo profesional:
 
-Herramientas:
+Datos: Se utilizaron dos datasets iniciales, uno que contenia los datos del regímen subsidiado y otro con el contributivo. Ambos datasets poseian en conjunto un total 1.8+ millons de registros. Se trabajó en SQLite3 para poder obtener un dataset ponderado del SGSSS con un total de 43,941 filas, representando a 46,291,518 afiliados. Adicionalmente, se integraron datos de proyecciones poblacionales del DANE para 2025.
 
--SQL: Para la agregación inicial de datos y la unificación de las tablas.
-
--Python (Pandas & Matplotlib/Seaborn): Para el análisis final, los cálculos y la visualización de datos.
+Herramientas: SQLite3, Python 3, con las librerías Pandas (para la manipulación y análisis de datos) y Matplotlib/Seaborn (para la visualización).
 
 4. Análisis y Hallazgos Clave
-El análisis se centró en agregar el total de afiliados por municipio para identificar los centros con mayor población.
-![alt text](image.png)
+Hallazgo 1: La Centralización es un Mito
+El análisis refuta la hipótesis del "50+1". Las tres ciudades más grandes, aunque dominantes, no superan el 50% del total nacional.
 
-Hallazgos Principales:
-El cálculo del total de afiliados en las tres ciudades principales (Bogotá, Medellín y Cali) arrojó un resultado de 18,949,695 millones de afiliados entre ambos regímenes.
-Conclusión de la hipótesis: Este número representa el 40.94% del total nacional, por lo que se refuta la hipótesis del "50+1".
-Se observa una clara dominancia de Bogotá D.C., que casi triplica en tamaño a la segunda ciudad, Medellín, demostrando una fuerte centralización en la capital, pero no en el conjunto de las "tres grandes".
+Total de afiliados en Bogotá, Medellín y Cali: 18,949,695.
 
-5. Conclusiones y Próximos Pasos
-Este análisis sugiere que, aunque las tres ciudades principales son vitales, las estrategias de salud pública no deben subestimar la importancia del resto del país, donde reside casi el 60% de la población afiliada. Un próximo paso lógico sería analizar la distribución del type_affiliate (Cotizante vs. Beneficiario) por región para profundizar en el análisis de la formalidad laboral.
+Porcentaje del total nacional: 40.94%.
+
+El siguiente gráfico muestra la clara dominancia de Bogotá, pero también la importancia agregada del resto del país.
+
+<img width="768" height="460" alt="image" src="https://github.com/user-attachments/assets/92ebe862-19c4-4b73-be2d-23c8bad8e198" />
+
+
+Hallazgo 2: Fuerte Desequilibrio Regional
+La hipótesis del desequilibrio regional fue confirmada. El ratio de beneficiarios por cotizante varía drásticamente entre departamentos, reflejando diferentes estructuras socioeconómicas.
+
+Departamentos con mayor ratio (más dependencia): Magdalena (0.83), Cesar (0.75), Atlántico (0.75).
+
+Departamentos con menor ratio (más independencia): Guainía (0.26), Putumayo (0.36), Vaupés (0.39).
+
+Este gráfico comparativo ilustra claramente los dos extremos del país.
+
+<img width="756" height="488" alt="image" src="https://github.com/user-attachments/assets/a39cd432-8a26-4bf4-b2b1-428d3cd3fe5b" />
+
+Hallazgo 3: Alta Tasa de Cobertura Nacional
+El cálculo final, comparando el total de afiliados con la población estimada en los departamentos analizados, revela una alta tasa de cobertura neta.
+
+Tasa de Cobertura Neta: 87.16%.
+
+<img width="612" height="440" alt="image" src="https://github.com/user-attachments/assets/a82d3f90-31d7-4a9c-bd45-39639b079491" />
+
+5. Conclusiones
+Este análisis demuestra que el sistema de salud colombiano es más descentralizado de lo que comúnmente se asume, con casi un 60% de los afiliados residiendo fuera de los tres principales centros urbanos. Adicionalmente, se confirma que la estructura de afiliación varía significativamente por región, ofreciendo un mapa claro de la formalidad laboral en el país. Estos insights son cruciales para la planificación de estrategias de salud pública a nivel nacional y regional.

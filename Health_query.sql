@@ -1,6 +1,9 @@
 WITH total_affiliates AS (
 	SELECT 
-		"contributory" as regimen
+		"contributory" as regimen,
+		department,
+		municipality,
+		entity_name,
 		type_affiliate,
 		genre,
 		quantity_contributory AS quantity,
@@ -9,6 +12,9 @@ WITH total_affiliates AS (
 	UNION ALL
 	SELECT
 		"subsidised" as regimen,
+		department,
+		municipality,
+		entity_name,
 		type_affiliate,
 		genre,
 		quantity_subsidised AS quantity
@@ -16,14 +22,22 @@ WITH total_affiliates AS (
 		subsidised
 ),
 SELECT
-	regimen,
-	type_affiliate,
-	genre,
-	sum(quantity) As total_quantity
+    regimen,
+    department,
+    municipality,
+    entity_name,
+    type_affiliate,
+    genre,
+    SUM(quantity) AS total_quantity
 FROM
 	total_affiliates
 GROUP BY
-	 regimen,
+	regimen,
+    department, 
+    municipality,
+    entity_name,
     type_affiliate,
-    genre;
+    genre
 ORDER BY
+	department,
+    municipality;

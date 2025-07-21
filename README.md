@@ -16,7 +16,7 @@ Hipótesis (Desequilibrio Regional): La proporción de 'Beneficiarios' por cada 
 3. Metodología y Herramientas
 El análisis se realizó utilizando un flujo de trabajo profesional:
 
-Datos: Se utilizaron dos datasets iniciales, uno que contenia los datos del regímen subsidiado y otro con el contributivo. Ambos datasets poseian en conjunto un total 1.8+ millons de registros. Se trabajó en SQLite3 para poder obtener un dataset ponderado del SGSSS con un total de 43,941 filas, representando a 46,291,518 afiliados. Adicionalmente, se integraron datos de proyecciones poblacionales del DANE para 2025.
+Datos: Se utilizaron dos datasets iniciales, uno que contenia los datos del regímen subsidiado y otro con el contributivo. Ambos datasets poseian en conjunto un total 1.8+ millones de registros. Se trabajó en SQLite3 para poder obtener un dataset ponderado del SGSSS con un total de 43,941 filas, representando a 46,291,518 afiliados. Adicionalmente, se integraron datos de proyecciones poblacionales del DANE para 2025.
 
 Herramientas: SQLite3, Python 3, con las librerías Pandas (para la manipulación y análisis de datos) y Matplotlib/Seaborn (para la visualización).
 

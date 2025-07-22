@@ -6,7 +6,7 @@ WITH total_affiliates AS (
 		entity_name,
 		type_affiliate,
 		genre,
-		quantity_contributory AS quantity,
+		quantity_contributory AS quantity
 	FROM
 		contributory
 	UNION ALL
@@ -20,7 +20,7 @@ WITH total_affiliates AS (
 		quantity_subsidised AS quantity
 	FROM
 		subsidised
-),
+)
 SELECT
     regimen,
     department,
